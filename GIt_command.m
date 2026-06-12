@@ -33,7 +33,7 @@ system(['git commit -m "', msg, '"']);
 !git switch main
 % 切换到 main 分支
 
-!git switch codex/convert-myproblem-to-problem-class-for-platemo
+!git switch codex/establish-dynamics-model-for-reconfigurable-robot
 % 切换到指定分支
 
 !git switch -c branch_4
