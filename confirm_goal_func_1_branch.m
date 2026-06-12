@@ -36,5 +36,6 @@ num_goal = num_exp + n;
 
 %% 求优化目标3：机器人原始模块数+展开后模块数
 
+%% 绘图
 PlotSV(LP,SV_goal);
 

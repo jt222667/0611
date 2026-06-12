@@ -249,6 +249,79 @@ RP_data.J_type = J_type;
 RP_data.T_L = T_L;
 RP_data.T_B = T_B;
 
+
+
+%% 动力学参数（模块 1~7）
+
+% module 1：直通回转关节，0.4 m 轴向长度；近端含电机/减速器，远端为输出轴与法兰。
+mass_prox(1) = 1.90;
+mass_dist(1) = 1.30;
+mass(1) = mass_prox(1) + mass_dist(1);
+COM_prox(:,1) = [0; 0; 0.105];
+COM_dist(:,1) = [0; 0; 0.085];
+COM(:,1) = [0; 0; 0.178];
+Inertia_prox(:,:,1) = diag([0.0090, 0.0090, 0.0053]);
+Inertia_dist(:,:,1) = diag([0.0057, 0.0057, 0.0028]);
+Inertia(:,:,1) = diag([0.0470, 0.0470, 0.0085]);
+
+% module 2：正交输出回转关节；近端执行器较重，远端为轻量直角输出结构。
+mass_prox(2) = 2.10;
+mass_dist(2) = 1.50;
+mass(2) = mass_prox(2) + mass_dist(2);
+COM_prox(:,2) = [0; 0; 0.105];
+COM_dist(:,2) = [0; -0.095; 0];
+COM(:,2) = [0; -0.040; 0.145];
+Inertia_prox(:,:,2) = diag([0.0100, 0.0100, 0.0059]);
+Inertia_dist(:,:,2) = diag([0.0066, 0.0048, 0.0032]);
+Inertia(:,:,2) = diag([0.0500, 0.0450, 0.0180]);
+
+% module 3：带 0.1 m 近端偏置的正交关节；近端容纳主要驱动件，远端输出较短。
+mass_prox(3) = 2.40;
+mass_dist(3) = 1.20;
+mass(3) = mass_prox(3) + mass_dist(3);
+COM_prox(:,3) = [0; 0.040; 0.140];
+COM_dist(:,3) = [0; 0; 0.055];
+COM(:,3) = [0; 0.060; 0.178];
+Inertia_prox(:,:,3) = diag([0.0214, 0.0190, 0.0068]);
+Inertia_dist(:,:,3) = diag([0.0021, 0.0021, 0.0022]);
+Inertia(:,:,3) = diag([0.0550, 0.0500, 0.0190]);
+
+% module 4：双偏置大型正交关节，近端臂更长且承载驱动/壳体，远端含输出传动。
+mass_prox(4) = 3.00;
+mass_dist(4) = 2.00;
+mass(4) = mass_prox(4) + mass_dist(4);
+COM_prox(:,4) = [0; -0.090; 0.130];
+COM_dist(:,4) = [0; 0.090; 0.050];
+COM(:,4) = [0; -0.098; 0.178];
+Inertia_prox(:,:,4) = diag([0.0448, 0.0360, 0.0096]);
+Inertia_dist(:,:,4) = diag([0.0175, 0.0140, 0.0049]);
+Inertia(:,:,4) = diag([0.1300, 0.1250, 0.0500]);
+
+% module 5：0.4 m 直连杆，主要为薄壁铝合金管/外壳与两端接口。
+mass(5) = 1.10;
+COM(:,5) = [0; 0; 0.200];
+Inertia(:,:,5) = diag([0.0155, 0.0155, 0.0017]);
+
+% module 6：90 度折弯连杆，等效质量分布沿 z 与局部 y 两段展开。
+mass(6) = 1.35;
+COM(:,6) = [0; 0.100; 0.200];
+Inertia(:,:,6) = diag([0.0140, 0.0080, 0.0080]);
+
+% module 7：45 度折弯连杆，质心位于折线路径中部，轴向惯量低于横向惯量。
+mass(7) = 1.25;
+COM(:,7) = [0; 0.071; 0.271];
+Inertia(:,:,7) = diag([0.0152, 0.0120, 0.0050]);
+
+RP_data.mass = mass;             % 模块总质量，维度：(1, 模块数)，单位 kg
+RP_data.COM = COM;               % 模块整体质心，维度：(3, 模块数)，单位 m
+RP_data.Inertia = Inertia;       % 模块整体惯性矩阵，维度：(3, 3, 模块数)，单位 kg*m^2
+RP_data.mass_prox = mass_prox;   % 关节模块近端侧质量，维度：(1, 模块数)，单位 kg
+RP_data.mass_dist = mass_dist;   % 关节模块远端侧质量，维度：(1, 模块数)，单位 kg
+RP_data.COM_prox = COM_prox;     % 近端侧质心，维度：(3, 模块数)，单位 m
+RP_data.COM_dist = COM_dist;     % 远端侧质心，维度：(3, 模块数)，单位 m
+RP_data.Inertia_prox = Inertia_prox; % 近端侧惯性矩阵，维度：(3, 3, 模块数)，单位 kg*m^2
+RP_data.Inertia_dist = Inertia_dist; % 远端侧惯性矩阵，维度：(3, 3, 模块数)，单位 kg*m^2
+
 end
 
 
