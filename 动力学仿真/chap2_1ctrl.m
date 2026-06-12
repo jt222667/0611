@@ -33,12 +33,22 @@ q_D_dot = u(22:28);    % 期望关节速度
 q_A   = u(8:14);     % 实际关节位置
 q_A_dot  = u(15:21);    % 实际关节速度
 
+%% PD
+% Kp = diag([150 150 120 120 100 80 50]);
+% Kd = diag([20 20 15 15 12 10 6]);
+% e  = q_D - q_A;
+% de = q_D_dot - q_A_dot;
+% tau = Kp * e + Kd * de;
+% sys = tau(:);
+
+%% PD + 前馈
 Kp = diag([150 150 120 120 100 80 50]);
 Kd = diag([20 20 15 15 12 10 6]);
-
 e  = q_D - q_A;
 de = q_D_dot - q_A_dot;
 
 tau = Kp * e + Kd * de;
 sys = tau(:);
+
+
 end

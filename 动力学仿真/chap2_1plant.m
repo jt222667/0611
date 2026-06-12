@@ -40,7 +40,7 @@ q   = x(1:7);
 qd  = x(8:14);
 tau = u(1:7);
 
-[M,C,G] = calc_MCG_0612(LP, SV, q, qd);
+[M,C,G] = calc_MCG_0612_mex(LP, SV, q, qd);
 
 qdd = M \ (tau - C*qd - G);
 sys = [qd; qdd];

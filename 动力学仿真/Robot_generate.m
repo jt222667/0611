@@ -9,13 +9,10 @@ SV = SV_generate(LP);
 rb = calc_Dy_Para_0612(LP);
 LP.rb = rb;
 
+q = rand(LP.num_joint, 1) * 2*pi;
+qd = 0.1*q;
 
-% 
-% q = rand(LP.num_joint, 1) * 2*pi;
-% qd = 0.1*q;
-% profile on;
-% [M, C, G] = calc_MCG_0612(LP, SV, q, qd);
-% profile off;
-% profile viewer;
-
-
+codegen calc_MCG_0612_core ...
+    -args {LP, SV, q, qd} ...
+    -o calc_MCG_0612_mex ...
+    -report
