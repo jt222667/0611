@@ -10,12 +10,9 @@ SV = SV_generate(LP);
 
 %%
 q = rand(LP.num_joint, 1) * 2*pi;
-SV.qd(LP.R_idx(1:LP.num_joint)) = 0.1*q;
+qd = 0.1*q;
 
-SV = Trans_aa_pos_ori(LP,SV,q);
-PlotSV(LP,SV);
-
-[M, C, G] = calc_MCG_0612(LP, SV, q);
+[M, C, G] = calc_MCG_0612(LP, SV, q, qd);
 
 disp('M = ');
 disp(M);
