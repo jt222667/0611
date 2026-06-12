@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<MF0 version="1.1" packageUris="http://schema.mathworks.com/mf0/slsa_mm_param_rtp/R2023a">
-  <slsa.mm.param.rtp.ModelMetadata type="slsa.mm.param.rtp.ModelMetadata" uuid="30542ebe-ad5b-4507-bcab-95b27302e257">
-    <modelName>chap2_1sim</modelName>
-  </slsa.mm.param.rtp.ModelMetadata>
-</MF0>

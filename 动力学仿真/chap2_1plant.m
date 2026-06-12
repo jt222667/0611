@@ -15,6 +15,7 @@ switch flag
     otherwise
         error(['Unhandled flag = ', num2str(flag)]);
 end
+end
 
 function [sys,x0,str,ts] = mdlInitializeSizes
 sizes = simsizes;
@@ -28,8 +29,10 @@ sys = simsizes(sizes);
 x0  = zeros(14,1);
 str = [];
 ts  = [0 0];
+end
 
 function sys = mdlDerivatives(x,u)
+
 LP = evalin('base', 'LP');
 SV = evalin('base', 'SV');
 
@@ -38,9 +41,11 @@ qd  = x(8:14);
 tau = u(1:7);
 
 [M,C,G] = calc_MCG_0612(LP, SV, q, qd);
-qdd = M \ (tau - C*qd - G);
 
+qdd = M \ (tau - C*qd - G);
 sys = [qd; qdd];
+end
 
 function sys = mdlOutputs(x)
 sys = x;
+end
