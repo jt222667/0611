@@ -9,9 +9,9 @@ LP = LP_generate(module_out, install_out, align_out, sequence_out, RP_data);
 SV = SV_generate(LP);
 
 %%
-% q = zeros(LP.num_joint, 1);
 q = rand(LP.num_joint, 1) * 2*pi;
 SV.qd(LP.R_idx(1:LP.num_joint)) = 0.1*q;
+
 SV = Trans_aa_pos_ori(LP,SV,q);
 PlotSV(LP,SV);
 

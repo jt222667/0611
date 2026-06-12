@@ -1,4 +1,5 @@
-%% 总体函数
+%% 总体函数【不对 LP SV 更改】
+
 function [M, C, G] = calc_MCG_0612(LP, SV, q)
 g = [0; 0; -9.81];
 idx_q = LP.R_idx(1:LP.num_joint);
