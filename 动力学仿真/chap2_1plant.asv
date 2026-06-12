@@ -1,7 +1,7 @@
 function [sys,x0,str,ts] = chap2_1plant(t,x,u,flag)
 %CHAP2_1PLANT 7 自由度机器人动力学被控对象
-% 状态 x = [q; qd]，输入 u = tau。
-% 动力学方程：M(q)qdd + C(q,qd)qd + G(q) = tau。
+% 状态 x = [q; dq]，输入 u = tau。
+% 动力学方程：M(q)qdd + C(q,dq)dq + G(q) = tau。
 
 switch flag
     case 0
@@ -34,13 +34,14 @@ LP = evalin('base', 'LP');
 SV = evalin('base', 'SV');
 
 q   = x(1:7);
-qd  = x(8:14);
+dq  = x(8:14);
 tau = u(1:7);
+tic;
+[M,C,G] = calc_MCG_0612(LP, SV, q, dq);
+toc;
+qdd = M \ (tau - C*dq - G);
 
-[M,C,G] = calc_MCG_0612(LP, SV, q, qd);
-qdd = M \ (tau - C*qd - G);
-
-sys = [qd; qdd];
+sys = [dq; qdd];
 
 function sys = mdlOutputs(x)
 sys = x;

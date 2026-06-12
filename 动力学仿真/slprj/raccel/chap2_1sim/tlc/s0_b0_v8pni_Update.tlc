@@ -1,0 +1,24 @@
+%implements s0_b0_v8pni_Update "C"
+
+%function Update(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcUpdateFcnOfS0B3 = OpaqueTLCBlockFcn("Update", 0, 3, 0, 3, 0)
+%assign tlcUpdateFcnOfS0B11 = OpaqueTLCBlockFcn("Update", 0, 11, 0, 3, 1)
+%<tlcUpdateFcnOfS0B3>\
+if (%<(SLibCGIRIsSampleHit(1, 0))>) {
+    memcpy(&rtDW.ks3q3verid[0], &rtB.juh1as1tu1[0], 14U * sizeof(real_T));
+}
+%<tlcUpdateFcnOfS0B11>\
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function UpdateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Update0(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 3, fcnProtoType)>
+%endfunction
