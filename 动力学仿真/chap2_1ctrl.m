@@ -32,32 +32,12 @@ q_D  = u(1:7);      % 期望关节位置
 q_D_dot = u(22:28);    % 期望关节速度
 q_D_dot_dot = -q_D;    % 期望关节速度
 
-q_A   = u(8:14);     % 实际关节位置
-q_A_dot  = u(15:21);    % 实际关节速度
-
 LP = evalin('base', 'LP');
 SV = evalin('base', 'SV');
 
-%% PD
-% Kp = diag([150 150 120 120 100 80 50]);
-% Kd = diag([20 20 15 15 12 10 6]);
-% e  = q_D - q_A;
-% de = q_D_dot - q_A_dot;
-% tau = Kp * e + Kd * de;
-% sys = tau(:);
-
-%% PD + 前馈
-Kp = diag([150 150 120 120 100 80 50]);
-Kd = diag([20 20 15 15 12 10 6]);
-e  = q_D - q_A;
-de = q_D_dot - q_A_dot;
-% tau_pd = Kp * e + Kd * de;
-
-[M,C,G] = calc_MCG_0612_mex(LP, SV, q_D, q_D_dot);
-tau_ff = M * q_D_dot_dot + C * q_D_dot + G;
-
-tau =  tau_ff;
-
+%% 前馈
+[M_ctrl,C_ctrl,G_ctrl] = calc_MCG_0612_mex(LP, SV, q_D, q_D_dot);
+tau = M_ctrl * q_D_dot_dot + C_ctrl * q_D_dot + G_ctrl;
 sys = tau(:);
 
 end

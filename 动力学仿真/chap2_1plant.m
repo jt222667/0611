@@ -26,7 +26,7 @@ sizes.NumInputs      = 7;
 sizes.DirFeedthrough = 0;
 sizes.NumSampleTimes = 1;
 sys = simsizes(sizes);
-x0  = zeros(14,1);
+x0  = [0 0 0 0 0 0 0 1 1 1 1 1 1 1];
 str = [];
 ts  = [0 0];
 end
@@ -40,9 +40,9 @@ q   = x(1:7);
 qd  = x(8:14);
 tau = u(1:7);
 
-[M,C,G] = calc_MCG_0612_mex(LP, SV, q, qd);
+[M_plant,C_plant,G_plant] = calc_MCG_0612_mex(LP, SV, q, qd);
 
-qdd = M \ (tau - C*qd - G);
+qdd = M_plant \ (tau - C_plant*qd - G_plant);
 sys = [qd; qdd];
 end
 
