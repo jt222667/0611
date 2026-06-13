@@ -302,7 +302,7 @@ static emlrtBCInfo
     nb_emlrtBCI =
         {
             1,              /* iFirst */
-            10,             /* iLast */
+            11,             /* iLast */
             8,              /* lineNo */
             14,             /* colNo */
             "LP.BB",        /* aName */
@@ -317,7 +317,7 @@ static emlrtBCInfo
     ob_emlrtBCI =
         {
             1,              /* iFirst */
-            10,             /* iLast */
+            11,             /* iLast */
             15,             /* lineNo */
             39,             /* colNo */
             "LP.J_type",    /* aName */
@@ -344,7 +344,7 @@ static emlrtBCInfo
     pb_emlrtBCI =
         {
             1,              /* iFirst */
-            10,             /* iLast */
+            11,             /* iLast */
             25,             /* lineNo */
             39,             /* colNo */
             "LP.J_type",    /* aName */
@@ -383,7 +383,7 @@ static emlrtBCInfo
     qb_emlrtBCI =
         {
             1,              /* iFirst */
-            30,             /* iLast */
+            33,             /* iLast */
             24,             /* lineNo */
             38,             /* colNo */
             "SV.AA",        /* aName */
@@ -410,7 +410,7 @@ static emlrtBCInfo
     rb_emlrtBCI =
         {
             1,              /* iFirst */
-            30,             /* iLast */
+            33,             /* iLast */
             32,             /* lineNo */
             38,             /* colNo */
             "SV.AA",        /* aName */
@@ -434,12 +434,12 @@ static emlrtDCInfo
 };
 
 /* Function Definitions */
-void calc_aa_0318(const emlrtStack *sp, const real_T LP_module[10],
-                  real_T LP_num_q, const real_T LP_align[10],
-                  const real_T LP_BB[10], const real_T LP_Rp[90],
+void calc_aa_0318(const emlrtStack *sp, const real_T LP_module[11],
+                  real_T LP_num_q, const real_T LP_align[11],
+                  const real_T LP_BB[11], const real_T LP_Rp[90],
                   const real_T LP_Rd[90], const real_T LP_RBcp[27],
-                  const real_T LP_T_L[160], const char_T LP_J_type[10],
-                  const real_T LP_SN[10], struct2_T *SV)
+                  const real_T LP_T_L[160], const char_T LP_J_type[11],
+                  const real_T LP_SN[11], struct2_T *SV)
 {
   static const int8_T iv[3] = {0, 0, 1};
   real_T A_0_i[9];
@@ -460,8 +460,8 @@ void calc_aa_0318(const emlrtStack *sp, const real_T LP_module[10],
   for (b_i = 0; b_i < i; b_i++) {
     real_T d;
     if (((int32_T)((uint32_T)b_i + 1U) < 1) ||
-        ((int32_T)((uint32_T)b_i + 1U) > 10)) {
-      emlrtDynamicBoundsCheckR2012b((int32_T)((uint32_T)b_i + 1U), 1, 10,
+        ((int32_T)((uint32_T)b_i + 1U) > 11)) {
+      emlrtDynamicBoundsCheckR2012b((int32_T)((uint32_T)b_i + 1U), 1, 11,
                                     &nb_emlrtBCI, (emlrtConstCTX)sp);
     }
     d = LP_BB[b_i];
@@ -705,8 +705,8 @@ void calc_aa_0318(const emlrtStack *sp, const real_T LP_module[10],
           emlrtIntegerCheckR2012b(d, &db_emlrtDCI, (emlrtConstCTX)sp);
         }
         Cz_tmp_tmp = (int32_T)d;
-        if ((Cz_tmp_tmp < 1) || (Cz_tmp_tmp > 10)) {
-          emlrtDynamicBoundsCheckR2012b(Cz_tmp_tmp, 1, 10, &ob_emlrtBCI,
+        if ((Cz_tmp_tmp < 1) || (Cz_tmp_tmp > 11)) {
+          emlrtDynamicBoundsCheckR2012b(Cz_tmp_tmp, 1, 11, &ob_emlrtBCI,
                                         (emlrtConstCTX)sp);
         }
         if (LP_J_type[Cz_tmp_tmp - 1] == 'R') {
@@ -931,9 +931,9 @@ void calc_aa_0318(const emlrtStack *sp, const real_T LP_module[10],
               emlrtIntegerCheckR2012b(e_Cz_tmp, &gb_emlrtDCI,
                                       (emlrtConstCTX)sp);
             }
-            b = ((e_Cz_tmp < 1.0) || (e_Cz_tmp > 30.0));
+            b = ((e_Cz_tmp < 1.0) || (e_Cz_tmp > 33.0));
             if (b) {
-              emlrtDynamicBoundsCheckR2012b((int32_T)e_Cz_tmp, 1, 30,
+              emlrtDynamicBoundsCheckR2012b((int32_T)e_Cz_tmp, 1, 33,
                                             &qb_emlrtBCI, (emlrtConstCTX)sp);
             }
             A_0_i_tmp = (int32_T)e_Cz_tmp;
@@ -944,7 +944,7 @@ void calc_aa_0318(const emlrtStack *sp, const real_T LP_module[10],
                                       (emlrtConstCTX)sp);
             }
             if (b) {
-              emlrtDynamicBoundsCheckR2012b(A_0_i_tmp, 1, 30, &qb_emlrtBCI,
+              emlrtDynamicBoundsCheckR2012b(A_0_i_tmp, 1, 33, &qb_emlrtBCI,
                                             (emlrtConstCTX)sp);
             }
             A_0_i[3 * i2 + 1] = SV->AA[Cz_tmp_tmp + 1];
@@ -953,7 +953,7 @@ void calc_aa_0318(const emlrtStack *sp, const real_T LP_module[10],
                                       (emlrtConstCTX)sp);
             }
             if (b) {
-              emlrtDynamicBoundsCheckR2012b(A_0_i_tmp, 1, 30, &qb_emlrtBCI,
+              emlrtDynamicBoundsCheckR2012b(A_0_i_tmp, 1, 33, &qb_emlrtBCI,
                                             (emlrtConstCTX)sp);
             }
             A_0_i[3 * i2 + 2] = SV->AA[Cz_tmp_tmp + 2];
@@ -979,8 +979,8 @@ void calc_aa_0318(const emlrtStack *sp, const real_T LP_module[10],
       }
       if (guard1 && (d != 0.0)) {
         A_0_i_tmp = (int32_T)d;
-        if ((A_0_i_tmp < 1) || (A_0_i_tmp > 10)) {
-          emlrtDynamicBoundsCheckR2012b(A_0_i_tmp, 1, 10, &pb_emlrtBCI,
+        if ((A_0_i_tmp < 1) || (A_0_i_tmp > 11)) {
+          emlrtDynamicBoundsCheckR2012b(A_0_i_tmp, 1, 11, &pb_emlrtBCI,
                                         (emlrtConstCTX)sp);
         }
         if (LP_J_type[A_0_i_tmp - 1] == 'L') {
@@ -1128,9 +1128,9 @@ void calc_aa_0318(const emlrtStack *sp, const real_T LP_module[10],
               emlrtIntegerCheckR2012b(e_Cz_tmp, &hb_emlrtDCI,
                                       (emlrtConstCTX)sp);
             }
-            b = ((e_Cz_tmp < 1.0) || (e_Cz_tmp > 30.0));
+            b = ((e_Cz_tmp < 1.0) || (e_Cz_tmp > 33.0));
             if (b) {
-              emlrtDynamicBoundsCheckR2012b((int32_T)e_Cz_tmp, 1, 30,
+              emlrtDynamicBoundsCheckR2012b((int32_T)e_Cz_tmp, 1, 33,
                                             &rb_emlrtBCI, (emlrtConstCTX)sp);
             }
             A_0_i_tmp = (int32_T)e_Cz_tmp;
@@ -1141,7 +1141,7 @@ void calc_aa_0318(const emlrtStack *sp, const real_T LP_module[10],
                                       (emlrtConstCTX)sp);
             }
             if (b) {
-              emlrtDynamicBoundsCheckR2012b(A_0_i_tmp, 1, 30, &rb_emlrtBCI,
+              emlrtDynamicBoundsCheckR2012b(A_0_i_tmp, 1, 33, &rb_emlrtBCI,
                                             (emlrtConstCTX)sp);
             }
             A_0_i[3 * i2 + 1] = SV->AA[Cz_tmp_tmp + 1];
@@ -1150,7 +1150,7 @@ void calc_aa_0318(const emlrtStack *sp, const real_T LP_module[10],
                                       (emlrtConstCTX)sp);
             }
             if (b) {
-              emlrtDynamicBoundsCheckR2012b(A_0_i_tmp, 1, 30, &rb_emlrtBCI,
+              emlrtDynamicBoundsCheckR2012b(A_0_i_tmp, 1, 33, &rb_emlrtBCI,
                                             (emlrtConstCTX)sp);
             }
             A_0_i[3 * i2 + 2] = SV->AA[Cz_tmp_tmp + 2];

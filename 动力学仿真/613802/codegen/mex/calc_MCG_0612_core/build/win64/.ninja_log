@@ -1,0 +1,15 @@
+# ninja log v5
+8	305	8030121429457060	build/win64/calc_MCG_0612_core_data.obj	935d23ccd838bf61
+33	309	8030121429457060	build/win64/c_mexapi_version.obj	2d50cf3241043adf
+5	311	8030121429457060	build/win64/rt_nonfinite.obj	7bcd42bd2804f3ff
+17	311	8030121429457060	build/win64/eml_int_forloop_overflow_check.obj	6a82aee6cef2f881
+10	312	8030121429457060	build/win64/calc_MCG_0612_core_initialize.obj	8280df5295a68382
+1	313	8030121429457060	build/win64/calc_MCG_0612_core_terminate.obj	da7e5a66a4f4a7f2
+14	314	8030121429531180	build/win64/_coder_calc_MCG_0612_core_mex.obj	7cba803bf6c63d68
+25	314	8030121429569073	build/win64/calc_MCG_0612_core_emxutil.obj	d992d80cd53a79b1
+22	317	8030121429613628	build/win64/_coder_calc_MCG_0612_core_info.obj	6047194675b2ccb8
+28	389	8030121430359734	build/win64/_coder_calc_MCG_0612_core_api.obj	a45342cfc920db1
+12	425	8030121430574088	build/win64/calc_pos_0318.obj	23092b73ce997f9e
+20	530	8030121431743490	build/win64/calc_aa_0318.obj	354d187bab42582f
+30	658	8030121433033989	build/win64/calc_MCG_0612_core.obj	74600cfba819d9b2
+659	696	8030121433423462	calc_MCG_0612_mex.mexw64	d7560ebad0d2de10

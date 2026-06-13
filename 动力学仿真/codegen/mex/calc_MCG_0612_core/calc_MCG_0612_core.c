@@ -381,7 +381,7 @@ static emlrtDCInfo c_emlrtDCI = {
 
 static emlrtBCInfo d_emlrtBCI = {
     1,                    /* iFirst */
-    10,                   /* iLast */
+    11,                   /* iLast */
     6,                    /* lineNo */
     6,                    /* colNo */
     "SV.q",               /* aName */
@@ -674,7 +674,7 @@ static emlrtBCInfo t_emlrtBCI = {
 
 static emlrtBCInfo u_emlrtBCI = {
     1,                   /* iFirst */
-    10,                  /* iLast */
+    11,                  /* iLast */
     77,                  /* lineNo */
     42,                  /* colNo */
     "SV.RR",             /* aName */
@@ -897,7 +897,7 @@ static emlrtDCInfo o_emlrtDCI = {
 
 static emlrtBCInfo ab_emlrtBCI = {
     1,         /* iFirst */
-    10,        /* iLast */
+    11,        /* iLast */
     19,        /* lineNo */
     6,         /* colNo */
     "SV.q",    /* aName */
@@ -922,7 +922,7 @@ static emlrtDCInfo p_emlrtDCI = {
 
 static emlrtBCInfo bb_emlrtBCI = {
     1,             /* iFirst */
-    10,            /* iLast */
+    11,            /* iLast */
     87,            /* lineNo */
     18,            /* colNo */
     "LP.J_type",   /* aName */
@@ -947,7 +947,7 @@ static emlrtDCInfo q_emlrtDCI = {
 
 static emlrtBCInfo cb_emlrtBCI = {
     1,                   /* iFirst */
-    30,                  /* iLast */
+    33,                  /* iLast */
     75,                  /* lineNo */
     22,                  /* colNo */
     "SV.AA",             /* aName */
@@ -1499,8 +1499,8 @@ static void calc_MG(const emlrtStack *sp, const struct0_T *LP, struct2_T *SV,
     if (alpha1 != (int32_T)muDoubleScalarFloor(alpha1)) {
       emlrtIntegerCheckR2012b(alpha1, &o_emlrtDCI, (emlrtConstCTX)sp);
     }
-    if (((int8_T)alpha1 < 1) || ((int8_T)alpha1 > 10)) {
-      emlrtDynamicBoundsCheckR2012b((int8_T)alpha1, 1, 10, &ab_emlrtBCI,
+    if (((int8_T)alpha1 < 1) || ((int8_T)alpha1 > 11)) {
+      emlrtDynamicBoundsCheckR2012b((int8_T)alpha1, 1, 11, &ab_emlrtBCI,
                                     (emlrtConstCTX)sp);
     }
     tmp_data[i] = (int8_T)alpha1;
@@ -1646,8 +1646,8 @@ static void calc_MG(const emlrtStack *sp, const struct0_T *LP, struct2_T *SV,
       if (alpha1 != (int32_T)muDoubleScalarFloor(alpha1)) {
         emlrtIntegerCheckR2012b(alpha1, &q_emlrtDCI, &b_st);
       }
-      if (((int32_T)alpha1 < 1) || ((int32_T)alpha1 > 10)) {
-        emlrtDynamicBoundsCheckR2012b((int32_T)alpha1, 1, 10, &bb_emlrtBCI,
+      if (((int32_T)alpha1 < 1) || ((int32_T)alpha1 > 11)) {
+        emlrtDynamicBoundsCheckR2012b((int32_T)alpha1, 1, 11, &bb_emlrtBCI,
                                       &b_st);
       }
       if (LP->J_type[(int32_T)alpha1 - 1] == 'R') {
@@ -1738,9 +1738,9 @@ static void calc_MG(const emlrtStack *sp, const struct0_T *LP, struct2_T *SV,
           if (d1 != c_loop_ub) {
             emlrtIntegerCheckR2012b(d1, &r_emlrtDCI, &st);
           }
-          c_y = ((d1 < 1.0) || (d1 > 30.0));
+          c_y = ((d1 < 1.0) || (d1 > 33.0));
           if (c_y) {
-            emlrtDynamicBoundsCheckR2012b((int32_T)d1, 1, 30, &cb_emlrtBCI,
+            emlrtDynamicBoundsCheckR2012b((int32_T)d1, 1, 33, &cb_emlrtBCI,
                                           &st);
           }
           loop_ub_tmp = (int32_T)d1;
@@ -1750,7 +1750,7 @@ static void calc_MG(const emlrtStack *sp, const struct0_T *LP, struct2_T *SV,
             emlrtIntegerCheckR2012b(d1, &r_emlrtDCI, &st);
           }
           if (c_y) {
-            emlrtDynamicBoundsCheckR2012b(loop_ub_tmp, 1, 30, &cb_emlrtBCI,
+            emlrtDynamicBoundsCheckR2012b(loop_ub_tmp, 1, 33, &cb_emlrtBCI,
                                           &st);
           }
           A[3 * i + 1] = SV->AA[e_loop_ub + 1];
@@ -1758,7 +1758,7 @@ static void calc_MG(const emlrtStack *sp, const struct0_T *LP, struct2_T *SV,
             emlrtIntegerCheckR2012b(d1, &r_emlrtDCI, &st);
           }
           if (c_y) {
-            emlrtDynamicBoundsCheckR2012b(loop_ub_tmp, 1, 30, &cb_emlrtBCI,
+            emlrtDynamicBoundsCheckR2012b(loop_ub_tmp, 1, 33, &cb_emlrtBCI,
                                           &st);
           }
           A[3 * i + 2] = SV->AA[e_loop_ub + 2];
@@ -1781,8 +1781,8 @@ static void calc_MG(const emlrtStack *sp, const struct0_T *LP, struct2_T *SV,
         if (alpha1 != (int32_T)muDoubleScalarFloor(alpha1)) {
           emlrtIntegerCheckR2012b(alpha1, &i_emlrtDCI, &st);
         }
-        if (((int32_T)alpha1 < 1) || ((int32_T)alpha1 > 10)) {
-          emlrtDynamicBoundsCheckR2012b((int32_T)alpha1, 1, 10, &u_emlrtBCI,
+        if (((int32_T)alpha1 < 1) || ((int32_T)alpha1 > 11)) {
+          emlrtDynamicBoundsCheckR2012b((int32_T)alpha1, 1, 11, &u_emlrtBCI,
                                         &st);
         }
         r2 = _mm_loadu_pd(&pc[0]);
@@ -2251,8 +2251,8 @@ void calc_MCG_0612_core(const emlrtStack *sp, const struct0_T *LP,
       if (n != (int32_T)muDoubleScalarFloor(n)) {
         emlrtIntegerCheckR2012b(n, &c_emlrtDCI, (emlrtConstCTX)sp);
       }
-      if (((int32_T)n < 1) || ((int32_T)n > 10)) {
-        emlrtDynamicBoundsCheckR2012b((int32_T)n, 1, 10, &d_emlrtBCI,
+      if (((int32_T)n < 1) || ((int32_T)n > 11)) {
+        emlrtDynamicBoundsCheckR2012b((int32_T)n, 1, 11, &d_emlrtBCI,
                                       (emlrtConstCTX)sp);
       }
       tmp_data[i] = (int32_T)n;
@@ -2283,8 +2283,8 @@ void calc_MCG_0612_core(const emlrtStack *sp, const struct0_T *LP,
           if (d != (int32_T)muDoubleScalarFloor(d)) {
             emlrtIntegerCheckR2012b(d, &c_emlrtDCI, &st);
           }
-          if (((int32_T)d < 1) || ((int32_T)d > 10)) {
-            emlrtDynamicBoundsCheckR2012b((int32_T)d, 1, 10, &d_emlrtBCI, &st);
+          if (((int32_T)d < 1) || ((int32_T)d > 11)) {
+            emlrtDynamicBoundsCheckR2012b((int32_T)d, 1, 11, &d_emlrtBCI, &st);
           }
           tmp_data[i] = (int32_T)d;
         } else {

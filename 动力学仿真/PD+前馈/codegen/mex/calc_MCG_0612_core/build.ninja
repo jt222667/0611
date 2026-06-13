@@ -1,0 +1,58 @@
+# CompilerName=msvc150
+# Mode=optim
+ninja_required_version = 1.3
+
+# Basic folders
+root = .
+builddir = $root\build\win64
+matlabdir = F:\MATLAB\R2025b
+startdir = F:\Archive 归档\0611\myproblem\动力学仿真
+
+# Toolchain information
+cc = cl
+cxx = cl
+linker = link
+linkerxx = link
+
+cflags =  /c /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I "$root" /I "$startdir" /I "$root\interface" /I "$matlabdir\extern\include" /I "." -DMODEL=calc_MCG_0612_mex /openmp /wd4101 
+
+cxxflags =  /c /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I "$root" /I "$startdir" /I "$root\interface" /I "$matlabdir\extern\include" /I "." -DMODEL=calc_MCG_0612_mex /openmp /wd4101 
+
+ldflags =  /nologo /manifest   /DLL /LIBPATH:"$matlabdir\extern\lib\win64\microsoft" libmx.lib libmex.lib libmat.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib  /out:"calc_MCG_0612_mex.mexw64" /LIBPATH:"$matlabdir\extern\lib\win64\microsoft" libmwblas.lib libemlrt.lib libcovrt.lib libut.lib libmwmathutil.lib libiomp5md.lib /nodefaultlib:vcomp /LIBPATH:"$matlabdir\bin\win64" /export:mexFunction /export:mexfilerequiredapiversion /export:emlrtMexFcnProperties /export:calc_MCG_0612_core /export:calc_MCG_0612_core_initialize /export:calc_MCG_0612_core_terminate /export:calc_MCG_0612_core_atexit /export:emxEnsureCapacity_int8_T /export:emxEnsureCapacity_boolean_T /export:emxFree_int8_T /export:emxFree_boolean_T /export:emxInit_int8_T /export:emxInit_boolean_T /export:emxEnsureCapacity_real_T /export:emxFree_real_T /export:emxInit_real_T
+
+ldxxflags =  /nologo /manifest   /DLL /LIBPATH:"$matlabdir\extern\lib\win64\microsoft" libmx.lib libmex.lib libmat.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib libMatlabDataArray.lib libMatlabEngine.lib  /out:"calc_MCG_0612_mex.mexw64" /LIBPATH:"$matlabdir\extern\lib\win64\microsoft" libmwblas.lib libemlrt.lib libcovrt.lib libut.lib libmwmathutil.lib libiomp5md.lib /nodefaultlib:vcomp /LIBPATH:"$matlabdir\bin\win64" /export:mexFunction /export:mexfilerequiredapiversion /export:emlrtMexFcnProperties /export:calc_MCG_0612_core /export:calc_MCG_0612_core_initialize /export:calc_MCG_0612_core_terminate /export:calc_MCG_0612_core_atexit /export:emxEnsureCapacity_int8_T /export:emxEnsureCapacity_boolean_T /export:emxFree_int8_T /export:emxFree_boolean_T /export:emxInit_int8_T /export:emxInit_boolean_T /export:emxEnsureCapacity_real_T /export:emxFree_real_T /export:emxInit_real_T
+
+linkobjs = 
+
+# Build Rules
+rule cc
+    command = $cc $cflags $in /Fo$out
+
+rule cxx
+    command = $cxx $cxxflags $in /Fo$out
+
+rule link
+    command = $linker @$out.rsp $linkobjs $ldflags
+    rspfile = $out.rsp
+    rspfile_content = $in
+
+rule linkxx
+    command = $linkerxx $in $linkobjs $ldxxflags
+
+# Build
+build $builddir\calc_MCG_0612_core_data.obj : cc $root\calc_MCG_0612_core_data.c
+build $builddir\rt_nonfinite.obj : cc $root\rt_nonfinite.c
+build $builddir\calc_MCG_0612_core_initialize.obj : cc $root\calc_MCG_0612_core_initialize.c
+build $builddir\calc_MCG_0612_core_terminate.obj : cc $root\calc_MCG_0612_core_terminate.c
+build $builddir\calc_MCG_0612_core.obj : cc $root\calc_MCG_0612_core.c
+build $builddir\_coder_calc_MCG_0612_core_api.obj : cc $root\interface\_coder_calc_MCG_0612_core_api.c
+build $builddir\_coder_calc_MCG_0612_core_mex.obj : cc $root\interface\_coder_calc_MCG_0612_core_mex.c
+build $builddir\eml_int_forloop_overflow_check.obj : cc $root\eml_int_forloop_overflow_check.c
+build $builddir\calc_aa_0318.obj : cc $root\calc_aa_0318.c
+build $builddir\calc_pos_0318.obj : cc $root\calc_pos_0318.c
+build $builddir\calc_MCG_0612_core_emxutil.obj : cc $root\calc_MCG_0612_core_emxutil.c
+build $builddir\_coder_calc_MCG_0612_core_info.obj : cc $root\interface\_coder_calc_MCG_0612_core_info.c
+build $builddir\c_mexapi_version.obj : cc $matlabdir\extern\version\c_mexapi_version.c
+
+# Link
+build $root\calc_MCG_0612_mex.mexw64 : link $builddir\calc_MCG_0612_core_data.obj $builddir\rt_nonfinite.obj $builddir\calc_MCG_0612_core_initialize.obj $builddir\calc_MCG_0612_core_terminate.obj $builddir\calc_MCG_0612_core.obj $builddir\_coder_calc_MCG_0612_core_api.obj $builddir\_coder_calc_MCG_0612_core_mex.obj $builddir\eml_int_forloop_overflow_check.obj $builddir\calc_aa_0318.obj $builddir\calc_pos_0318.obj $builddir\calc_MCG_0612_core_emxutil.obj $builddir\_coder_calc_MCG_0612_core_info.obj $builddir\c_mexapi_version.obj 
